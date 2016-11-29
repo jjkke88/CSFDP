@@ -1,6 +1,8 @@
+import matplotlib
+matplotlib.use("Qt4Agg")
 import numpy as np
 from util import *
-
+import matplotlib.pyplot as plt
 
 """process data"""
 class DataProcess(object):
@@ -14,7 +16,6 @@ class DataProcess(object):
         self.calculate_sigma()
         self.get_center()
         self.classify_others()
-
 
     def get_data_from_file(self):
         """
@@ -108,9 +109,12 @@ class DataProcess(object):
         return index_array[nearest_index]
 
 if __name__ == "__main__":
-    data_process = DataProcess("data/test.dat", '\t', 0.1, 90, 0.03)
+    data_process = DataProcess("data/test.dat", '\t', 0.02, 15, 0.1)
     # print data_process.rho_vector
     # print data_process.rho_vector
     # print
     # print data_process.sigma_vector
+    plt.plot(data_process.rho_vector, data_process.sigma_vector, 'rs')
+    plt.show()
+
     print data_process.result
