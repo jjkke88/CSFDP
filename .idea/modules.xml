@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CSFDP.iml" filepath="$PROJECT_DIR$/.idea/CSFDP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Dcluster/.idea/Dcluster.iml" filepath="$PROJECT_DIR$/../Dcluster/.idea/Dcluster.iml" />
     </modules>
   </component>
 </project>
