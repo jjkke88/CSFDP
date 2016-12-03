@@ -33,11 +33,9 @@ class DataProcess(object):
             distance_matrix[index[1] - 1][index[0] - 1] = index[2]
             rho_matrix[index[0] - 1][index[1] - 1] += kafang_distribution(index[2] - self.d_c)
             rho_matrix[index[1] - 1][index[0] - 1] += kafang_distribution(index[2] - self.d_c)
-
         self.distance_matrix = distance_matrix
         self.rho_matrix = rho_matrix
         self.rho_vector = np.sum(self.rho_matrix, axis=1)
-
 
     def calculate_sigma(self):
         sigma_vector = np.zeros(self.sample_number)
@@ -70,24 +68,6 @@ class DataProcess(object):
             result[i] = result[nearest_point_index]
         self.result = result
 
-    # def calculate_distance_with_center(self, index):
-    #     """
-    #     calculater distance with center point
-    #     :param index: the index of sample point
-    #     :return: distance with center point
-    #     """
-    #     return self.calculate_distance(index, self.center)
-    #
-    # def get_first_cluster(self, index):
-    #     """
-    #     choose a nearest cluster for sample points have largest rho
-    #     :param index: the index of sample point
-    #     :return: cluster number
-    #     """
-    #     distance_with_center = self.calculate_distance_with_center(index)
-    #     cluster = np.argmin(distance_with_center)
-    #     return cluster
-    #
     def calculate_distance(self, index, index_array):
         """
         calculate distance between point index with points in index_array
@@ -99,7 +79,6 @@ class DataProcess(object):
 
     def get_cluster_result(self, index, index_array):
         """
-
         :param index:
         :return:
         """
@@ -109,12 +88,11 @@ class DataProcess(object):
         return index_array[nearest_index]
 
 if __name__ == "__main__":
-    data_process = DataProcess("data/test.dat", '\t', 0.02, 15, 0.1)
+    data_process = DataProcess("dist_data.dat", '\t', 50, 16, 0.13)
     # print data_process.rho_vector
     # print data_process.rho_vector
     # print
     # print data_process.sigma_vector
     plt.plot(data_process.rho_vector, data_process.sigma_vector, 'rs')
     plt.show()
-
     print data_process.result
