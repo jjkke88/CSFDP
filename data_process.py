@@ -110,7 +110,10 @@ class DataProcess(object):
         return index_array[nearest_index]
 
     def plt_show(self):
+        ax = plt.gca()
         plt.plot(self.rho_vector , self.sigma_vector , 'rs')
+        ax.set_xlabel('rho')
+        ax.set_ylabel('sigma')
         plt.show()
 
 if __name__ == "__main__":
@@ -135,23 +138,17 @@ if __name__ == "__main__":
         x = [raw_data[i][0] for i in center]
         y = [raw_data[i][1] for i in center]
         color = [np.cos(cluster_result[i]) for i in center]
-        plt.scatter(x , y , c=color , s=25 , marker='o')
+        plt.scatter(x , y , c=color, s=25 , marker='o')
 
-
-
-    """
-    def __init__(self, file_name, delimiter, d_c, rho_min, sigma_min):
-    """
+    import time
+    start = time.time()
     data_process = DataProcess("dist_data.dat", '\t', 0, 90, 20)
-    # print data_process.rho_vector
-    # print data_process.rho_vector
-    # print
-    # print data_process.sigma_vector
-
-    print data_process.result
+    end = time.time()
+    print "process time:"+str(end-start)
+    # print data_process.result
     raw_data = np.genfromtxt("raw_data.txt", delimiter=" ", names=['x' , 'y'] ,
                              dtype="f8,f8")
 
     draw_different_point(raw_data, data_process.result, cls=None)
-    draw_center_point(raw_data, data_process.center, data_process.result)
+    # draw_center_point(raw_data, data_process.center, data_process.result)
     plt.show()
