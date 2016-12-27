@@ -1,5 +1,5 @@
 import matplotlib
-matplotlib.use("Qt4Agg")
+# matplotlib.use("Qt4Agg")
 import numpy as np
 import random
 import matplotlib.pyplot as plt
@@ -53,9 +53,9 @@ class CreateData(object):
                 x_all.append(x)
                 y_all.append(y)
         elif type == "poligan":
-            x = np.array(range(points_number))
+            x = np.array(range(points_number))*10
             for i in xrange(class_number):
-                y = np.square(x) + i * 20 * x + (i + 1) * 500
+                y = np.square(x) + x[i] * 20 * x + (i + 1) * 500
                 x_all.append(x)
                 y_all.append(y)
         elif type == "circle":
@@ -75,7 +75,7 @@ class CreateData(object):
         fp = open(dist_data_file, "wb")
         for i in range(x_all.shape[0]):
             for j in range(x_all.shape[0]):
-                dist = np.sqrt(np.square(x_all[i] - x_all[j]) + np.square(y_all[i] - y_all[j]))
+                dist = np.sqrt(np.square(x_all[i] - x_all[j])+np.square(y_all[i] - y_all[j]))
                 fp.write(str(i + 1) + '\t' + str(j + 1) + '\t' + str(dist) + '\n')
         fp.close()
 
